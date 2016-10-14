@@ -59,7 +59,7 @@ char *get_login_name()
 *******************************************/
 
 /* Buffer to store the absolute path of files, so we don't need to chdir() */
-static char filename[PATH_MAX];
+static char filename[1024];
 static char *toggle[] = { "off", "on" };
 static char *nstats[] = { "none", "total", "recent" };
 
@@ -67,7 +67,7 @@ static FILE *open_config_file(char *mode)
 {
     FILE *file;
 
-    snprintf(filename, PATH_MAX, "%s/%s", get_home_dir(), CONFIGFILE);
+    snprintf(filename, 1024, "%s/%s", get_home_dir(), CONFIGFILE);
 
     if( !(file = fopen( filename, mode )) ) {
 	return NULL;
