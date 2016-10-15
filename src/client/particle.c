@@ -144,7 +144,7 @@ void particles_delete(int color, particles_t *ptl)
 void railslug_init(byte dir, netushort src_x, netushort src_y,
 		   netushort length, byte color1, byte color2)
 {
-    if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/railgun.mp3 >&/dev/null &"))printf("Error playing railgun sound!\n");
+    if(system("$(which mpg123) -f 1500 data/sounds/railgun.mp3 >&/dev/null &"))printf("Error playing railgun sound!\n");
     particles_t *ptl;
     msec_t expire;
     unsigned int num_ip, num_op;    /* Number of Inner and Outer Particles */
@@ -219,16 +219,19 @@ void shotflare_init(byte dir, netushort src_x, netushort src_y,
 {
 
         if(gettime()>lasthitscan+1) {
-            if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/m4a1.mp3 >&/dev/null &") && printf("Error playing shotgun/MG sound!\n"));
+            if(system("$(which mpg123) -f 1500 data/sounds/m4a1.mp3 >&/dev/null &") && printf("Error playing shotgun/MG sound!\n"));
             else {
                 lasthitscan=gettime();
                 shotgun=0;
+                printf("played sound\n");
+                system("echo CAN YOU SEE ME?");
             }
         }
         else if (!shotgun) {//must be a shotgun, play a shotgun sound and kill any playing minigun sounds
-            system("/usr/local/bin/mpg123 -f 1500 data/sounds/shotgun.mp3 >&/dev/null &") && printf("Error playing shotgun/MG sound!\n");
+            system("$(which mpg123) -f 1500 data/sounds/shotgun.mp3 >&/dev/null &") && printf("Error playing shotgun/MG sound!\n");
             lasthitscan=gettime()+5;
             shotgun=1;
+            printf("played sound\n");
         }
     particles_t *ptl;
     msec_t expire;
@@ -327,7 +330,7 @@ void beam_init(byte dir, netushort src_x, netushort src_y, netushort length,
 void explosion_init(byte dir, netushort src_x, netushort src_y,
 		    netushort length, byte color1, byte color2)
 {
-    if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/explosion.mp3 >&/dev/null &"))printf("Error playing explosion sound!\n");
+    if(system("$(which mpg123) -f 1500 data/sounds/explosion.mp3 >&/dev/null &"))printf("Error playing explosion sound!\n");
     particles_t *ptl;
     msec_t expire;
     float vel, f, inc;
@@ -622,7 +625,7 @@ void drip_init(byte dir, netushort src_x, netushort src_y, netushort num,
 void spawn_init(byte dir, netushort src_x, netushort src_y, netushort num,
 		byte color1, byte color2)
 {
-    if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/spawn.mp3 >&/dev/null &"))printf("Error playing spawn sound!\n");
+    if(system("$(which mpg123) -f 1500 data/sounds/spawn.mp3 >&/dev/null &"))printf("Error playing spawn sound!\n");
     particles_t *ptl;
     msec_t expire;
     unsigned int i, num_particles;
@@ -672,7 +675,7 @@ void spawn_init(byte dir, netushort src_x, netushort src_y, netushort num,
 void teleport_init(byte dir, netushort src_x, netushort src_y, netushort num,
 		byte color1, byte color2)
 {
-    if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/teleport.mp3 >&/dev/null &"))printf("Error playing teleport sound!\n");
+    if(system("$(which mpg123) -f 1500 data/sounds/teleport.mp3 >&/dev/null &"))printf("Error playing teleport sound!\n");
     particles_t *ptl;
     msec_t expire;
     unsigned int i, num_particles;
