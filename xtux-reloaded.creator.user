@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.1.0, 2016-10-12T18:07:43. -->
+<!-- Written by QtCreator 3.1.0, 2016-10-15T09:42:41. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -65,6 +65,7 @@
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <valuelist type="QVariantList" key="GenericProjectManager.GenericMakeStep.BuildTargets">
+       <value type="QString">clean</value>
        <value type="QString">all</value>
       </valuelist>
       <value type="bool" key="GenericProjectManager.GenericMakeStep.Clean">false</value>

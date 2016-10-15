@@ -210,20 +210,26 @@ void railslug_init(byte dir, netushort src_x, netushort src_y,
     }
 }
 
-//long long nextsound=0;
+long long lasthitscan=0;
+int shotgun=0;
+//int mgpid=0;
 
 void shotflare_init(byte dir, netushort src_x, netushort src_y,
            netushort length, byte color1, byte color2)
 {
-    //Check when the last sound was played, and don't play any if less than very small millis (to avoid shotgun sound overflow)
 
-   // if(!nextsound?(gettime()>nextsound):1) {
-   //     printf("Can play sound!");
-        if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/m4a1.mp3 >&/dev/null &"))printf("Error playing shotgun/MG sound!\n");
-   //     nextsound=gettime()+20;
-   //     printf("Nextsound is %lld", nextsound);
-   // }
-   // else printf("Sounds are too fast, dropping..\n"); //kill pid of last command and do a shotgun sound, then dont' allow more shotgun sounds?
+        if(gettime()>lasthitscan+1) {
+            if(system("/usr/local/bin/mpg123 -f 1500 data/sounds/m4a1.mp3 >&/dev/null &") && printf("Error playing shotgun/MG sound!\n"));
+            else {
+                lasthitscan=gettime();
+                shotgun=0;
+            }
+        }
+        else if (!shotgun) {//must be a shotgun, play a shotgun sound and kill any playing minigun sounds
+            system("/usr/local/bin/mpg123 -f 1500 data/sounds/shotgun.mp3 >&/dev/null &") && printf("Error playing shotgun/MG sound!\n");
+            lasthitscan=gettime()+5;
+            shotgun=1;
+        }
     particles_t *ptl;
     msec_t expire;
     unsigned int num_ip, num_op;
@@ -264,7 +270,7 @@ void shotflare_init(byte dir, netushort src_x, netushort src_y,
 
 
 
-#define BEAM_FREQ 15//8
+#define BEAM_FREQ 8//8
 #define BEAM_SPACING 2
 #define BEAM_AMP 3.5
 #define BEAM_COLORS 2

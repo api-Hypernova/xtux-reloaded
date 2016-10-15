@@ -146,7 +146,7 @@ netconnection_t *net_rec_new_connection(int fd, char *name, demo_header header)
 	if( size < 0 )
 	    perror("write");
 	else
-	    printf("Wrote only %d bytes of %d.\n", size, sizeof(demo_header));
+        printf("Wrote only %d bytes of %lu.\n", size, sizeof(demo_header));
 
 	close(demo_fd);
 	return NULL;
@@ -182,7 +182,7 @@ netconnection_t *net_fake_connection(char *demoname, demo_header *header)
 	if( size < 0 )
 	    perror("read");
 	else
-	    printf("Read only %d bytes of %d.\n", size, sizeof(demo_header));
+        printf("Read only %zd bytes of %lu.\n", size, sizeof(demo_header));
 
 	close(fd);
 	return NULL;

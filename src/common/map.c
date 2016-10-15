@@ -197,7 +197,7 @@ static int read_map_data(FILE *file, map_t *map, int layers)
 	    }
 	}
 
-	if( layer >= 0 && read >= 0 ) {
+    if( read >= 0 ) {
 	    if( read & (1<<layer) ) {
 		if( layer == TEXT ) {
 		    if( read_text_line(line, &map->text_root) > 0 ) {
@@ -267,7 +267,7 @@ static int read_layer(FILE *file, map_t *map, maplayer_t layer)
 	if( strlen(line) < map->width ) {
 	    printf("%s: Error with line %d, layer %s = (\"%s\")\n",
 		   __FILE__, y, layer_name[layer], line);
-	    printf("line length = %d, expected %d\n", strlen(line),map->width);
+        printf("line length = %lu, expected %d\n", strlen(line),map->width);
 	    free(ptr);
 	    return -1;
 	}

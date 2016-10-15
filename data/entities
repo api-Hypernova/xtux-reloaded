@@ -50,14 +50,15 @@ dying_order 0 1 2 0
 dying_framelen 250
 
 [GOWN]
-class GOODIE
-health 300
+#class GOODIE
+class BADDIE
+health 100
 width 40
 height 62
 speed 300
 accel 300
 #weapon CD
-weapon shotgun
+weapon chaingun
 draw_weapon 1
 bleeder 1
 sight 400
@@ -435,12 +436,13 @@ dying_framelen 250
 
 [BORG]
 class BADDIE
-health 80
+health 100
 width 40
 height 60
 speed 160
 accel 200
-weapon BORG_GUN
+#weapon BORG_GUN
+weapon egun
 draw_weapon 1
 bleeder 1
 sight 400
@@ -473,7 +475,8 @@ width 44
 height 62
 speed 100
 accel 200
-weapon NONE
+#weapon NONE
+weapon chaingun
 draw_weapon 0
 bleeder 1
 sight 200
@@ -629,7 +632,8 @@ width 48
 height 48
 speed 80
 accel 100
-weapon NONE
+#weapon NONE
+weapon rocket
 draw_weapon 0
 bleeder 1
 sight 200

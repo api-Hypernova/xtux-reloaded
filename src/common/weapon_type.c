@@ -40,7 +40,7 @@ byte weapon_type_init(void)
 	return 0;
     }
 
-    while( !feof( file ) && num_weapon_types < 256 ) {
+    while( !feof( file ) ) {
 	fgets( line, MAXLINE, file );
 	CHOMP(line); /* Lose the \n */
 	if( line[0] == '#' || line[0] == '\0' )
