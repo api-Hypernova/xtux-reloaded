@@ -51,12 +51,13 @@ dying_framelen 250
 
 [GOWN]
 class GOODIE
-health 100
+health 300
 width 40
 height 62
 speed 300
 accel 300
-weapon CD
+#weapon CD
+weapon shotgun
 draw_weapon 1
 bleeder 1
 sight 400
