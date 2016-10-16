@@ -386,7 +386,7 @@ void shards_init(byte dir, netushort src_x, netushort src_y, netushort length,
     particles_t *ptl;
     msec_t expire;
     unsigned int num_sh1, num_sh2; /* 2 shards colors */
-    int i;
+    int i, k;
     float vel;
     byte d;
 
@@ -435,15 +435,15 @@ void shards_init(byte dir, netushort src_x, netushort src_y, netushort length,
 	else
 	    ptl->expire = gettime() + M_SEC * client.ep_expire;
     ptl->stationary = 1; /* Zero velocity */
-    //for( k=0 ; k < 5 ; k++ )
+    for( k=0 ; k < 5 ; k++ )
     {
         netushort randx = src_x + (rand()%15) - 3;
         netushort randy = src_y + (rand()%15) - 3;
 
         for( i=0 ; i < NUM_HOLEPTLS ; i++ ) { //for loop declaration only works in
             //ptl->pos[i].x = src_x + (rand()%6) - 3; /* +/- 3 */
-            ptl->pos[i].x = randx + (rand()%6) - 3; /* +/- 3 */
-            ptl->pos[i].y = randy + (rand()%6) - 3; /* +/- 3 */
+            ptl->pos[i].x = randx + (rand()%10) - 5; /* +/- 3 */
+            ptl->pos[i].y = randy + (rand()%10) - 5; /* +/- 3 */
     }
     }
 
