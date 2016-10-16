@@ -57,7 +57,7 @@ damage 12
 spread 8
 mflash 1
 max_length 700  #220
-reload_time 600 #900
+reload_time 800 #900
 initial_ammo 8
 gun_image shotgun.xpm
 gun_frames 1
